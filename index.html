@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html class="light scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Doshnivaran - Samadhan Milega Har Samasya Ka</title>
+    
+    <!-- Scripts & Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+    <!-- Tailwind Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#ffdad6",
+                        "outline": "#8e7164",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdad7",
+                        "secondary-fixed-dim": "#e9c400",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#6e5c00",
+                        "surface-tint": "#a04100",
+                        "tertiary": "#954742",
+                        "primary-fixed-dim": "#ffb693",
+                        "on-secondary-fixed": "#221b00",
+                        "on-primary-container": "#572000",
+                        "inverse-on-surface": "#f4f0eb",
+                        "secondary": "#705d00",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#ebe8e3",
+                        "tertiary-container": "#dc7f79",
+                        "secondary-container": "#fcd400",
+                        "on-secondary": "#ffffff",
+                        "background": "#fdf9f4",
+                        "inverse-surface": "#31302d",
+                        "surface-container": "#f1ede8",
+                        "surface-dim": "#ddd9d5",
+                        "on-surface-variant": "#5a4136",
+                        "on-primary-fixed": "#351000",
+                        "on-surface": "#1c1c19",
+                        "on-tertiary-fixed": "#3d0506",
+                        "inverse-primary": "#ffb693",
+                        "surface-container-low": "#f7f3ee",
+                        "surface-container-highest": "#e6e2dd",
+                        "on-primary-fixed-variant": "#7a3000",
+                        "secondary-fixed": "#ffe16d",
+                        "on-secondary-fixed-variant": "#544600",
+                        "on-tertiary-fixed-variant": "#77302d",
+                        "tertiary-fixed-dim": "#ffb3ad",
+                        "primary-container": "#ff6b00",
+                        "outline-variant": "#e2bfb0",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#a04100",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#1c1c19",
+                        "surface": "#fdf9f4",
+                        "on-tertiary-container": "#5b1b19",
+                        "surface-bright": "#fdf9f4",
+                        "primary-fixed": "#ffdbcc",
+                        "surface-variant": "#e6e2dd"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "4xl": "2rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "section-gap": "80px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-padding": "24px"
+                    },
+                    fontFamily: {
+                        "display-xl": ["Noto Serif", "serif"],
+                        "label-caps": ["Manrope", "sans-serif"],
+                        "headline-md": ["Noto Serif", "serif"],
+                        "body-lg": ["Manrope", "sans-serif"],
+                        "headline-lg": ["Noto Serif", "serif"],
+                        "body-md": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for Advanced 3D, Glows & Animations -->
+    <style>
+        body {
+            background-color: #fdf9f4;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Subtle Moving Background Pattern */
+        .mandala-bg {
+            background-image: url('data:image/svg+xml;utf8,<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="50" stroke="%23ff6b00" stroke-width="0.3" fill="none" opacity="0.07"/><circle cx="60" cy="60" r="35" stroke="%23ff6b00" stroke-width="0.3" fill="none" opacity="0.07"/><path d="M60 10 L60 110 M10 60 L110 60" stroke="%23ff6b00" stroke-width="0.3" opacity="0.07"/></svg>');
+            background-attachment: fixed;
+        }
+
+        /* Animated Text Gradient */
+        .text-gradient-animate {
+            background: linear-gradient(to right, #ff6b00, #e9c400, #ff6b00);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 3s linear infinite;
+        }
+        @keyframes gradientMove {
+            to { background-position: 200% center; }
+        }
+
+        /* 3D Glassmorphism Cards with Glowing Borders */
+        .glass-card-3d {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 15px 35px rgba(160, 65, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            z-index: 1;
+        }
+        .glass-card-3d::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255,107,0,0.4), rgba(255,255,255,0), rgba(233,196,0,0.4));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .glass-card-3d:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(255, 107, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+            z-index: 10;
+        }
+        .glass-card-3d:hover::before {
+            opacity: 1;
+        }
+
+        /* Continuous Floating Animations */
+        @keyframes float-slow {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float-slow 6s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.5); }
+            70% { box-shadow: 0 0 0 25px rgba(255, 107, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
+        }
+        .btn-pulse {
+            animation: pulse-glow 2.5s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 25px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .btn-pulse-green {
+            animation: pulse-green 2s infinite;
+        }
+
+        /* Premium Buttons */
+        .saffron-gradient {
+            background: linear-gradient(135deg, #FF6B00 0%, #FF8C00 50%, #FFA500 100%);
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.3), inset 0 -3px 0 rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .saffron-gradient::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            transition: all 0.7s ease;
+        }
+        .saffron-gradient:hover::after {
+            left: 200%;
+        }
+        .saffron-gradient:hover {
+            box-shadow: 0 12px 30px rgba(255, 107, 0, 0.5), inset 0 -2px 0 rgba(0,0,0,0.05);
+            transform: translateY(-3px);
+        }
+
+        /* WhatsApp Specific Gradient */
+        .whatsapp-gradient {
+            background: linear-gradient(135deg, #1EBE5D 0%, #25D366 100%);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3), inset 0 -3px 0 rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .whatsapp-gradient:hover {
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+            transform: translateY(-3px);
+        }
+
+        /* Mandala Divider */
+        .mandala-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 60px 0;
+            opacity: 0.8;
+        }
+        .mandala-divider::before, .mandala-divider::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.5), transparent);
+        }
+        .mandala-divider-dot {
+            width: 14px;
+            height: 14px;
+            background: #FF6B00;
+            border-radius: 50%;
+            margin: 0 24px;
+            box-shadow: 0 0 20px rgba(255, 107, 0, 0.9);
+            position: relative;
+        }
+        .mandala-divider-dot::after {
+            content: '';
+            position: absolute;
+            top: -6px; left: -6px; right: -6px; bottom: -6px;
+            border: 2px solid rgba(255, 107, 0, 0.5);
+            border-radius: 50%;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Floating Nav Customization */
+        .floating-nav {
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.5) inset;
+        }
+    </style>
+</head>
+
+<body class="text-on-background font-body-md antialiased mandala-bg selection:bg-primary-container selection:text-on-primary-container">
+
+    <!-- Ambient Divine Glow Background (Animated Orbs) -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/20 blur-[140px] animate-pulse" style="animation-duration: 8s;"></div>
+        <div class="absolute bottom-[10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-secondary-fixed/30 blur-[120px] animate-pulse" style="animation-duration: 10s;"></div>
+        <div class="absolute top-[40%] left-[50%] w-[30%] h-[30%] rounded-full bg-tertiary-fixed/20 blur-[100px] animate-pulse" style="animation-duration: 12s;"></div>
+    </div>
+
+    <!-- Urgency Banner -->
+    <div class="fixed top-0 left-0 w-full z-[60] bg-gradient-to-r from-red-600 to-red-500 text-white py-2 px-4 text-center font-label-caps text-[11px] md:text-[13px] uppercase tracking-[0.15em] font-bold shadow-md">
+        <span class="animate-pulse inline-block mr-2">🔥</span> Limited slots available for Ujjain Mahakal Pujan this week. Book now!
+    </div>
+
+    <!-- Web TopAppBar -->
+    <header class="hidden md:flex fixed top-[36px] left-0 w-full z-50 justify-between items-center px-10 h-20 bg-white/70 backdrop-blur-2xl border-b border-white/50 shadow-sm transition-all duration-300">
+        <a href="#home" class="flex items-center gap-3 group">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary-fixed to-primary-container flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(255,107,0,0.4)] transition-all duration-300">
+                <span class="material-symbols-outlined text-primary group-hover:text-white transition-colors" style="font-variation-settings: 'FILL' 1;">temple_hindu</span>
+            </div>
+            <span class="text-[28px] font-extrabold tracking-tight text-primary font-headline-md drop-shadow-sm">Doshnivaran</span>
+        </a>
+        
+        <nav class="flex items-center gap-8 bg-white/60 backdrop-blur-md px-10 py-3.5 rounded-full border border-white shadow-inner">
+            <a class="font-serif text-[13px] uppercase tracking-widest text-on-surface hover:text-primary transition-all hover:scale-110 font-bold" href="#home">Home</a>
+            <a class="font-serif text-[13px] uppercase tracking-widest text-on-surface hover:text-primary transition-all hover:scale-110 font-bold" href="#services">Services</a>
+            <a class="font-serif text-[13px] uppercase tracking-widest text-on-surface hover:text-primary transition-all hover:scale-110 font-bold" href="#about">About</a>
+            <a class="font-serif text-[13px] uppercase tracking-widest text-on-surface hover:text-primary transition-all hover:scale-110 font-bold" href="#contact">Contact</a>
+        </nav>
+        
+        <a href="tel:6205980963" class="saffron-gradient text-white px-8 py-3 rounded-full flex items-center gap-2 font-bold text-sm uppercase tracking-widest btn-pulse">
+            <span class="material-symbols-outlined text-xl">call</span>
+            Call Now
+        </a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 pt-32 md:pt-52 pb-32 flex flex-col gap-section-gap">
+        
+        <!-- ================= SECTION 1: HERO (HOME) ================= -->
+        <section id="home" class="relative rounded-[2.5rem] overflow-hidden glass-card-3d p-10 md:p-24 text-center flex flex-col items-center justify-center min-h-[650px] group border-t-2 border-l-2 border-white/80">
+            <!-- Decorative Divine Sunburst -->
+            <div class="absolute inset-0 opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity duration-1000" style="background: radial-gradient(circle at center, #FF6B00 0%, transparent 70%);"></div>
+            <div class="absolute inset-0 opacity-5 pointer-events-none group-hover:rotate-12 transition-transform duration-[3s]" style="background-image: url('data:image/svg+xml;utf8,<svg width=\"300\" height=\"300\" viewBox=\"0 0 300 300\" xmlns=\"http://www.w3.org/2000/svg\"><polygon points=\"150,0 300,150 150,300 0,150\" fill=\"%23FF6B00\"/></svg>'); background-position: center; background-repeat: no-repeat; background-size: 80%;"></div>
+            
+            <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-primary-container to-primary flex items-center justify-center mb-8 animate-float shadow-[0_10px_30px_rgba(255,107,0,0.3)] border-4 border-white/50">
+                <span class="material-symbols-outlined text-6xl text-white drop-shadow-md" style="font-variation-settings: 'FILL' 1;">brightness_alert</span>
+            </div>
+
+            <h2 class="font-display-xl text-[44px] md:text-[72px] text-on-surface mb-6 relative z-10 max-w-5xl mx-auto leading-[1.1] font-black tracking-tight">
+                Samadhan Milega <br/>
+                <span class="text-gradient-animate drop-shadow-lg font-black block mt-2">Har Samasya Ka</span>
+            </h2>
+            
+            <p class="font-body-lg text-[20px] md:text-[26px] text-on-surface-variant mb-12 max-w-4xl mx-auto relative z-10 leading-relaxed font-semibold">
+                Expert Jyotish & Pujan Se Jeevan Ki Har Problem Ka Solution. Find peace and prosperity through authentic Vedic remedies in Ujjain.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center relative z-10 w-full sm:w-auto">
+                <a href="#services" class="saffron-gradient text-white font-label-caps text-sm py-5 px-10 rounded-full shadow-xl flex items-center justify-center gap-3 tracking-widest font-bold">
+                    <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">book_online</span>
+                    Book Puja Now
+                </a>
+                <a href="https://wa.me/916205980963?text=Hari%20Om!%20Mujhe%20Ujjain%20Puja%20aur%20apni%20samasya%20ke%20liye%20margdarshan%20chahiye.%20Kripya%20sahayta%20karein." target="_blank" rel="noopener noreferrer" class="whatsapp-gradient text-white font-label-caps text-sm py-5 px-10 rounded-full shadow-xl flex items-center justify-center gap-3 tracking-widest font-bold btn-pulse-green">
+                    <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">chat</span>
+                    WhatsApp Us
+                </a>
+                <a href="tel:6205980963" class="bg-white/80 backdrop-blur-xl border-2 border-primary/30 text-primary font-label-caps text-sm py-5 px-10 rounded-full shadow-xl hover:bg-white hover:border-primary transition-all flex items-center justify-center gap-3 tracking-widest font-bold">
+                    <span class="material-symbols-outlined text-[24px]">call</span>
+                    Call Now
+                </a>
+            </div>
+        </section>
+
+        <div class="mandala-divider"><div class="mandala-divider-dot"></div></div>
+
+        <!-- ================= SECTION 2: PROBLEMS ================= -->
+        <section id="about" class="space-y-16">
+            <div class="text-center max-w-4xl mx-auto animate-float" style="animation-duration: 7s;">
+                <h3 class="font-headline-lg text-[40px] md:text-[50px] text-on-surface font-extrabold mb-4 tracking-tight drop-shadow-sm">Are you facing these issues?</h3>
+                <p class="font-body-lg text-[22px] text-primary italic font-semibold">Har problem ka ek spiritual solution hota hai – bas sahi margdarshan chahiye.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card-3d rounded-3xl p-10 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer">
+                    <div class="absolute -top-12 -right-12 text-primary/5 group-hover:text-primary/10 transition-colors transform group-hover:scale-150 group-hover:rotate-[20deg] duration-700">
+                        <span class="material-symbols-outlined text-[180px]">device_thermostat</span>
+                    </div>
+                    <div class="w-24 h-24 rounded-full bg-white shadow-lg flex items-center justify-center mb-8 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 transform group-hover:-translate-y-2">
+                        <span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">favorite_border</span>
+                    </div>
+                    <h4 class="font-headline-md text-[28px] text-on-surface mb-3 font-extrabold">Vivah me deri?</h4>
+                    <p class="font-body-md text-on-surface-variant text-[18px] font-medium leading-relaxed">Delay in marriage or finding the right partner.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card-3d rounded-3xl p-10 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer">
+                    <div class="absolute -top-12 -right-12 text-secondary/5 group-hover:text-secondary/10 transition-colors transform group-hover:scale-150 group-hover:rotate-[20deg] duration-700">
+                        <span class="material-symbols-outlined text-[180px]">account_balance_wallet</span>
+                    </div>
+                    <div class="w-24 h-24 rounded-full bg-white shadow-lg flex items-center justify-center mb-8 text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-500 transform group-hover:-translate-y-2">
+                        <span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">payments</span>
+                    </div>
+                    <h4 class="font-headline-md text-[28px] text-on-surface mb-3 font-extrabold">Paisa ruk raha hai?</h4>
+                    <p class="font-body-md text-on-surface-variant text-[18px] font-medium leading-relaxed">Financial blockages and wealth retention issues.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card-3d rounded-3xl p-10 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer">
+                    <div class="absolute -top-12 -right-12 text-tertiary/5 group-hover:text-tertiary/10 transition-colors transform group-hover:scale-150 group-hover:rotate-[20deg] duration-700">
+                        <span class="material-symbols-outlined text-[180px]">work</span>
+                    </div>
+                    <div class="w-24 h-24 rounded-full bg-white shadow-lg flex items-center justify-center mb-8 text-tertiary group-hover:bg-tertiary group-hover:text-white transition-all duration-500 transform group-hover:-translate-y-2">
+                        <span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">trending_down</span>
+                    </div>
+                    <h4 class="font-headline-md text-[28px] text-on-surface mb-3 font-extrabold">Job me problem?</h4>
+                    <p class="font-body-md text-on-surface-variant text-[18px] font-medium leading-relaxed">Career stagnation, job loss, or workplace politics.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-card-3d rounded-3xl p-10 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer">
+                    <div class="absolute -top-12 -right-12 text-primary/5 group-hover:text-primary/10 transition-colors transform group-hover:scale-150 group-hover:rotate-[20deg] duration-700">
+                        <span class="material-symbols-outlined text-[180px]">child_care</span>
+                    </div>
+                    <div class="w-24 h-24 rounded-full bg-white shadow-lg flex items-center justify-center mb-8 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 transform group-hover:-translate-y-2">
+                        <span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">family_restroom</span>
+                    </div>
+                    <h4 class="font-headline-md text-[28px] text-on-surface mb-3 font-extrabold">Santan sukh me badha?</h4>
+                    <p class="font-body-md text-on-surface-variant text-[18px] font-medium leading-relaxed">Difficulties in conceiving or child-related worries.</p>
+                </div>
+
+                <!-- Card 5 (Wide) -->
+                <div class="glass-card-3d rounded-3xl p-10 flex flex-col items-center text-center relative overflow-hidden group cursor-pointer lg:col-span-2">
+                    <div class="absolute -top-12 -right-12 text-surface-variant/10 group-hover:text-surface-variant/20 transition-colors transform group-hover:scale-150 group-hover:rotate-[20deg] duration-700">
+                        <span class="material-symbols-outlined text-[180px]">psychology</span>
+                    </div>
+                    <div class="w-24 h-24 rounded-full bg-white shadow-lg flex items-center justify-center mb-8 text-on-surface-variant group-hover:bg-on-surface-variant group-hover:text-white transition-all duration-500 transform group-hover:-translate-y-2">
+                        <span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">sentiment_dissatisfied</span>
+                    </div>
+                    <h4 class="font-headline-md text-[28px] text-on-surface mb-3 font-extrabold">Mental stress?</h4>
+                    <p class="font-body-md text-on-surface-variant text-[18px] font-medium max-w-3xl leading-relaxed">Anxiety, depression, unknown fears, and lack of peace in daily life.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="mandala-divider"><div class="mandala-divider-dot"></div></div>
+
+        <!-- ================= SECTION 3: SERVICES ================= -->
+        <section id="services" class="pt-10">
+            <div class="text-center mb-20 animate-float" style="animation-duration: 8s;">
+                <h1 class="font-display-xl text-[44px] md:text-[56px] text-on-surface mb-6 drop-shadow-sm font-black tracking-tight">Ujjain Anushthan & <span class="text-primary">Puja Services</span></h1>
+                <p class="font-body-lg text-[22px] text-on-surface-variant max-w-4xl mx-auto font-medium">
+                    Authentic Vedic remedies performed by Vidwan Acharyas in the holy city of Mahakal. Find spiritual solutions for planetary afflictions.
+                </p>
+                <div class="flex items-center justify-center gap-4 mt-10">
+                    <div class="h-1 bg-gradient-to-r from-transparent to-primary w-32 rounded-full"></div>
+                    <div class="w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(255,107,0,0.8)]"></div>
+                    <div class="h-1 bg-gradient-to-l from-transparent to-primary w-32 rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Template for Service Cards to maintain consistency & premium feel -->
+                
+                <!-- Service 1 -->
+                <article class="glass-card-3d rounded-[2rem] p-10 relative overflow-hidden group flex flex-col h-full cursor-pointer bg-white/60">
+                    <div class="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-10 group-hover:scale-125 transition-all duration-700 text-primary">
+                        <span class="material-symbols-outlined text-[120px]">water_drop</span>
+                    </div>
+                    <div class="flex items-center gap-5 mb-8 relative z-10">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary-fixed to-primary flex items-center justify-center text-white shadow-xl transform group-hover:-rotate-12 transition-transform duration-500 border-4 border-white">
+                            <span class="material-symbols-outlined text-[36px]">sync</span>
+                        </div>
+                        <h2 class="font-headline-md text-[26px] text-on-surface font-black leading-tight">Kaal Sarp <br/>Dosh Nivaran</h2>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant mb-8 relative z-10 flex-grow text-[18px] font-medium leading-relaxed">
+                        Sampoorna shanti puja for Rahu-Ketu dosh. Door karein jeewan ki badhaayein aur payein saflta.
+                    </p>
+                    <div class="mb-10 relative z-10 bg-white/50 backdrop-blur border border-white p-5 rounded-2xl shadow-sm">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4 font-body-md text-on-surface font-bold text-lg">
+                                <span class="material-symbols-outlined text-primary text-[26px]">check_circle</span>
+                                <span>Career obstacles removal</span>
+                            </li>
+                            <li class="flex items-start gap-4 font-body-md text-on-surface font-bold text-lg">
+                                <span class="material-symbols-outlined text-primary text-[26px]">check_circle</span>
+                                <span>Mental peace & harmony</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-col gap-6 mt-auto relative z-10 border-t-2 border-surface-variant/50 pt-8">
+                        <div class="flex justify-between items-center font-label-caps text-on-surface-variant">
+                            <span class="uppercase tracking-[0.2em] font-bold text-[13px]">Starting from</span>
+                            <span class="font-headline-md text-primary text-[32px] font-black">₹3500</span>
+                        </div>
+                        <a href="https://wa.me/916205980963?text=Hari%20Om!%20Mujhe%20Kaal%20Sarp%20Dosh%20Nivaran%20Puja%20book%20karni%20hai." target="_blank" rel="noopener noreferrer" class="w-full saffron-gradient text-white font-black tracking-widest uppercase py-5 rounded-2xl hover:shadow-[0_10px_30px_rgba(255,107,0,0.4)] transition-all flex justify-center items-center gap-3 text-lg">
+                            Book Now <span class="material-symbols-outlined">arrow_forward_ios</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Service 2 -->
+                <article class="glass-card-3d rounded-[2rem] p-10 relative overflow-hidden group flex flex-col h-full cursor-pointer bg-white/60">
+                    <div class="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-10 group-hover:scale-125 transition-all duration-700 text-primary">
+                        <span class="material-symbols-outlined text-[120px]">local_fire_department</span>
+                    </div>
+                    <div class="flex items-center gap-5 mb-8 relative z-10">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary-fixed to-primary flex items-center justify-center text-white shadow-xl transform group-hover:-rotate-12 transition-transform duration-500 border-4 border-white">
+                            <span class="material-symbols-outlined text-[36px]">whatshot</span>
+                        </div>
+                        <h2 class="font-headline-md text-[26px] text-on-surface font-black leading-tight">Mangal Dosh <br/>Shanti</h2>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant mb-8 relative z-10 flex-grow text-[18px] font-medium leading-relaxed">
+                        Bhat Puja dwara Manglik dosh nivaran. Vivah me aari rukawato ko door karne ke liye vishesh puja.
+                    </p>
+                    <div class="mb-10 relative z-10 bg-white/50 backdrop-blur border border-white p-5 rounded-2xl shadow-sm">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4 font-body-md text-on-surface font-bold text-lg">
+                                <span class="material-symbols-outlined text-primary text-[26px]">check_circle</span>
+                                <span>Resolves marriage delays</span>
+                            </li>
+                            <li class="flex items-start gap-4 font-body-md text-on-surface font-bold text-lg">
+                                <span class="material-symbols-outlined text-primary text-[26px]">check_circle</span>
+                                <span>Marital harmony</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-col gap-6 mt-auto relative z-10 border-t-2 border-surface-variant/50 pt-8">
+                        <div class="flex justify-between items-center font-label-caps text-on-surface-variant">
+                            <span class="uppercase tracking-[0.2em] font-bold text-[13px]">Starting from</span>
+                            <span class="font-headline-md text-primary text-[32px] font-black">₹5100</span>
+                        </div>
+                        <a href="https://wa.me/916205980963?text=Hari%20Om!%20Mujhe%20Mangal%20Dosh%20Shanti%20Puja%20book%20karni%20hai." target="_blank" rel="noopener noreferrer" class="w-full saffron-gradient text-white font-black tracking-widest uppercase py-5 rounded-2xl hover:shadow-[0_10px_30px_rgba(255,107,0,0.4)] transition-all flex justify-center items-center gap-3 text-lg">
+                            Book Now <span class="material-symbols-outlined">arrow_forward_ios</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Service 3 -->
+                <article class="glass-card-3d rounded-[2rem] p-10 relative overflow-hidden group flex flex-col h-full cursor-pointer bg-white/60">
+                    <div class="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-10 group-hover:scale-125 transition-all duration-700 text-primary">
+                        <span class="material-symbols-outlined text-[120px]">psychology_alt</span>
+                    </div>
+                    <div class="flex items-center gap-5 mb-8 relative z-10">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary-fixed to-primary flex items-center justify-center text-white shadow-xl transform group-hover:-rotate-12 transition-transform duration-500 border-4 border-white">
+                            <span class="material-symbols-outlined text-[36px]">nature_people</span>
+                        </div>
+                        <h2 class="font-headline-md text-[26px] text-on-surface font-black leading-tight">Pitru Dosh <br/>Nivaran</h2>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant mb-8 relative z-10 flex-grow text-[18px] font-medium leading-relaxed">
+                        Purvajo ki shanti aur aashirwad prapti hetu Narayan Nagbali puja ka aayojan.
+                    </p>
+                    <div class="mb-10 relative z-10 bg-white/50 backdrop-blur border border-white p-5 rounded-2xl shadow-sm">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4 font-body-md text-on-surface font-bold text-lg">
+                                <span class="material-symbols-outlined text-primary text-[26px]">check_circle</span>
+                                <span>Ancestral blessings</span>
+                            </li>
+                            <li class="flex items-start gap-4 font-body-md text-on-surface font-bold text-lg">
+                                <span class="material-symbols-outlined text-primary text-[26px]">check_circle</span>
+                                <span>Financial stability</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-col gap-6 mt-auto relative z-10 border-t-2 border-surface-variant/50 pt-8">
+                        <div class="flex justify-between items-center font-label-caps text-on-surface-variant">
+                            <span class="uppercase tracking-[0.2em] font-bold text-[13px]">Starting from</span>
+                            <span class="font-headline-md text-primary text-[32px] font-black">₹11000</span>
+                        </div>
+                        <a href="https://wa.me/916205980963?text=Hari%20Om!%20Mujhe%20Pitru%20Dosh%20Nivaran%20Puja%20book%20karni%20hai." target="_blank" rel="noopener noreferrer" class="w-full saffron-gradient text-white font-black tracking-widest uppercase py-5 rounded-2xl hover:shadow-[0_10px_30px_rgba(255,107,0,0.4)] transition-all flex justify-center items-center gap-3 text-lg">
+                            Book Now <span class="material-symbols-outlined">arrow_forward_ios</span>
+                        </a>
+                    </div>
+                </article>
+                
+            </div>
+        </section>
+
+        <div class="mandala-divider"><div class="mandala-divider-dot"></div></div>
+
+        <!-- ================= SECTION 4: TESTIMONIALS ================= -->
+        <section class="glass-card-3d rounded-[3rem] p-10 md:p-20 relative overflow-hidden border-2 border-white/80 shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
+            <div class="absolute inset-0 bg-gradient-to-b from-white/60 to-transparent pointer-events-none"></div>
+            
+            <h3 class="font-display-xl text-[40px] md:text-[50px] text-on-surface text-center mb-16 relative z-10 font-black drop-shadow-sm tracking-tight">Devotee <span class="text-primary">Experiences</span></h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
+                <!-- Testimonial 1 -->
+                <div class="bg-white/80 backdrop-blur-xl p-10 rounded-3xl shadow-xl border border-white relative hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 group">
+                    <span class="material-symbols-outlined absolute top-8 right-8 text-primary/10 group-hover:text-primary/20 text-[80px] transform rotate-180 transition-colors">format_quote</span>
+                    <div class="flex items-center gap-6 mb-8">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-primary to-orange-400 text-white flex items-center justify-center font-black text-3xl shadow-lg border-4 border-white">RK</div>
+                        <div>
+                            <h4 class="font-headline-md text-2xl text-on-surface font-black">Rahul K.</h4>
+                            <div class="flex text-secondary-container mt-2 drop-shadow-sm">
+                                <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="font-body-md text-[20px] text-on-surface-variant italic leading-relaxed font-medium">"I was facing severe job issues for 2 years. After consulting Acharyaji and performing the suggested Ujjain Anushthan, I received a great offer within a month. Truly miraculous."</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white/80 backdrop-blur-xl p-10 rounded-3xl shadow-xl border border-white relative hover:-translate-y-3 hover:shadow-2xl transition-all duration-500 group">
+                    <span class="material-symbols-outlined absolute top-8 right-8 text-primary/10 group-hover:text-primary/20 text-[80px] transform rotate-180 transition-colors">format_quote</span>
+                    <div class="flex items-center gap-6 mb-8">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-secondary to-yellow-400 text-white flex items-center justify-center font-black text-3xl shadow-lg border-4 border-white">PM</div>
+                        <div>
+                            <h4 class="font-headline-md text-2xl text-on-surface font-black">Priya M.</h4>
+                            <div class="flex text-secondary-container mt-2 drop-shadow-sm">
+                                <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="font-body-md text-[20px] text-on-surface-variant italic leading-relaxed font-medium">"The Kundli Milan process was very detailed. The remedies suggested for our Mangal Dosh were simple yet effective. We are happily married now."</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="mandala-divider"><div class="mandala-divider-dot"></div></div>
+
+        <!-- ================= SECTION 5: CONTACT ================= -->
+        <section id="contact" class="space-y-16 pt-10">
+            <!-- Header Section -->
+            <div class="text-center max-w-4xl mx-auto flex flex-col items-center gap-6 animate-float" style="animation-duration: 9s;">
+                <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-white shadow-2xl border-4 border-primary/20 mb-4">
+                    <span class="material-symbols-outlined text-primary text-[50px]" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+                </div>
+                <h1 class="font-display-xl text-[50px] md:text-[64px] text-on-surface font-black tracking-tight">Sampark Karein</h1>
+                <p class="font-body-lg text-[22px] text-on-surface-variant max-w-3xl mx-auto font-medium">Aapki samasya ka vedic samadhan. Get in touch with our experts in Ujjain for personalized guidance.</p>
+                <div class="flex items-center justify-center w-full mt-6">
+                    <div class="h-1 bg-gradient-to-r from-transparent via-primary to-transparent w-40 rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Bento Grid Contact Info -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+                
+                <!-- Phone Action Card -->
+                <div class="md:col-span-5 glass-card-3d rounded-[2.5rem] p-12 flex flex-col items-center justify-center text-center gap-10 relative overflow-hidden group border-2 border-white">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 group-hover:rotate-12 transition-all duration-700">
+                        <span class="material-symbols-outlined text-[150px] text-primary" style="font-variation-settings: 'FILL' 1;">campaign</span>
+                    </div>
+                    
+                    <div class="w-32 h-32 rounded-full bg-white shadow-2xl flex items-center justify-center mb-2 border-4 border-primary/10 group-hover:border-primary/30 transition-all duration-500">
+                        <span class="material-symbols-outlined text-primary text-[60px] group-hover:scale-110 transition-transform duration-300" style="font-variation-settings: 'FILL' 1;">phone_in_talk</span>
+                    </div>
+                    
+                    <div class="flex flex-col gap-4 relative z-10 w-full">
+                        <span class="font-label-caps text-base text-on-surface-variant uppercase tracking-[0.25em] font-extrabold">Direct Consultation</span>
+                        <a class="font-headline-lg text-[46px] text-primary hover:text-orange-500 transition-colors font-black drop-shadow-md" href="tel:6205980963">6205980963</a>
+                    </div>
+                    
+                    <a href="tel:6205980963" class="w-full saffron-gradient text-white font-black text-xl py-6 px-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-4 relative z-10 btn-pulse tracking-widest uppercase">
+                        <span class="material-symbols-outlined text-3xl">call</span>
+                        Call Now
+                    </a>
+                </div>
+
+                <!-- Location & Context -->
+                <div class="md:col-span-7 flex flex-col gap-10">
+                    <!-- Location Card -->
+                    <div class="glass-card-3d rounded-[2.5rem] p-10 flex items-start gap-8 relative overflow-hidden cursor-pointer group border-2 border-white">
+                        <div class="absolute inset-0 bg-gradient-to-r from-white/60 to-transparent pointer-events-none"></div>
+                        <div class="p-6 rounded-2xl bg-white shadow-lg text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300 transform group-hover:-translate-y-1 relative z-10 border border-primary/10">
+                            <span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+                        </div>
+                        <div class="relative z-10">
+                            <h3 class="font-headline-md text-[32px] text-on-surface mb-2 font-black">Our Sanctum</h3>
+                            <p class="font-body-md text-[24px] text-primary font-black drop-shadow-sm">Ujjain (M.P.)</p>
+                            <p class="font-body-md text-[18px] text-on-surface-variant mt-4 font-medium leading-relaxed">The city of Mahakal. Visit us for authentic Vedic rituals and consultations in a sacred environment.</p>
+                        </div>
+                    </div>
+
+                    <!-- Google Map Placeholder -->
+                    <div class="flex-grow bg-white rounded-[2.5rem] border-4 border-white overflow-hidden relative min-h-[280px] shadow-2xl group">
+                        <div class="absolute inset-0 flex items-center justify-center z-10 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <a href="#" class="bg-white text-primary font-black text-xl px-10 py-5 rounded-full shadow-2xl flex items-center gap-4 hover:scale-110 transition-transform duration-300">
+                                <span class="material-symbols-outlined text-3xl">map</span>
+                                View on Map
+                            </a>
+                        </div>
+                        <img alt="Map" class="w-full h-full object-cover opacity-90 mix-blend-multiply transition-transform duration-[2s] group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPzbIqJCijBzaFQ0_wiq5Ik5JxP8uXIBE8QBUp_OYx_wHQJ9aj9DRVbyyr9Zs78jwF1tPnW1smHzZnqwF5TMwckBweiFFgUYUalQn0oVCkjm9YtePD1ycGFqCJLE43eHgXmcB6u30jB39zWfvaEf4mppDlrDUWNThrZHQJnQLK4NJPTpklDFB6Lckn9fEbW3mFobRttJaOMGsRcBGbAiNlWfPf2skJUqGBZVgUXlT3HMxl7OewsQlMi5CdbUd5L_BkGV3C-P6fq4g"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prominent Footer Message -->
+            <div class="mt-20 text-center py-20 px-10 rounded-[3rem] glass-card-3d border-2 border-primary/30 relative overflow-hidden group shadow-[0_20px_60px_rgba(255,107,0,0.15)] bg-white/80">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full blur-[100px] pointer-events-none group-hover:scale-150 group-hover:rotate-180 transition-all duration-[3s]"></div>
+                
+                <h2 class="font-display-xl text-[44px] md:text-[64px] text-primary relative z-10 drop-shadow-md leading-[1.2] font-black">
+                    "Ek call aapki zindagi <br class="hidden md:block"/> badal sakta hai"
+                </h2>
+                <div class="mt-12 flex justify-center animate-float" style="animation-duration: 5s;">
+                    <span class="material-symbols-outlined text-secondary-fixed text-[80px] drop-shadow-lg" style="font-variation-settings: 'FILL' 1;">spa</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FLOATING WHATSAPP BUTTON (Functional & Automated) -->
+    <a aria-label="Chat on WhatsApp" class="fixed bottom-32 md:bottom-12 right-6 md:right-12 z-[100] bg-[#25D366] text-white p-5 md:p-6 rounded-full shadow-[0_15px_40px_rgba(37,211,102,0.6)] hover:scale-110 hover:-translate-y-3 active:scale-95 transition-all duration-300 flex items-center justify-center group btn-pulse-green border-4 border-white" href="https://wa.me/916205980963?text=Hari%20Om!%20Mujhe%20Ujjain%20Puja%20aur%20apni%20samasya%20ke%20liye%20margdarshan%20chahiye.%20Kripya%20sahayta%20karein." target="_blank" rel="noopener noreferrer">
+        <span class="material-symbols-outlined text-[40px] md:text-[45px] relative z-10 drop-shadow-md" style="font-variation-settings: 'FILL' 1;">forum</span>
+        <!-- Tooltip -->
+        <span class="absolute right-[120%] mr-2 bg-white text-on-surface font-extrabold text-[15px] py-3 px-6 rounded-2xl shadow-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none border border-gray-100 translate-x-4 group-hover:translate-x-0">Chat with us! 💬</span>
+    </a>
+
+    <!-- Footer -->
+    <footer class="w-full pt-24 pb-36 md:pb-16 px-10 border-t-2 border-white bg-white/70 backdrop-blur-3xl flex flex-col items-center gap-8 relative z-20 mt-20 shadow-[0_-20px_50px_rgba(255,107,0,0.05)]">
+        <div class="w-full max-w-3xl flex items-center justify-center mb-6">
+            <div class="h-[2px] bg-gradient-to-r from-transparent to-amber-400 flex-grow"></div>
+            <div class="w-4 h-4 rounded-full bg-amber-500 mx-6 shadow-[0_0_20px_rgba(245,158,11,1)] animate-pulse"></div>
+            <div class="h-[2px] bg-gradient-to-l from-transparent to-amber-400 flex-grow"></div>
+        </div>
+        
+        <div class="font-extrabold text-primary font-serif text-[42px] drop-shadow-md tracking-tight mb-2">Doshnivaran</div>
+        
+        <div class="flex flex-wrap justify-center gap-10 mb-6">
+            <a class="font-serif text-[15px] font-black text-stone-600 hover:text-primary hover:scale-110 transition-all uppercase tracking-[0.1em]" href="#contact">Ujjain Location</a>
+            <a class="font-serif text-[15px] font-black text-primary underline decoration-2 decoration-primary/50 hover:scale-110 transition-all uppercase tracking-[0.1em]" href="#contact">Contact Us</a>
+            <a class="font-serif text-[15px] font-black text-stone-600 hover:text-primary hover:scale-110 transition-all uppercase tracking-[0.1em]" href="#">Terms & Conditions</a>
+        </div>
+        
+        <p class="font-serif text-[16px] text-center text-stone-500 font-bold max-w-xl mt-4 leading-relaxed">
+            © 2024 Doshnivaran Kendra Ujjain. <br/><span class="text-primary italic mt-3 inline-block font-black text-[20px] drop-shadow-sm">Samasya Aapki, Samadhan Hamara.</span>
+        </p>
+    </footer>
+
+    <!-- MODERN FLOATING DOCK (Mobile Navbar) -->
+    <nav class="md:hidden fixed bottom-6 left-4 right-4 z-[90] flex justify-around items-center px-4 py-3 bg-white/90 backdrop-blur-2xl rounded-3xl border-2 border-white shadow-[0_20px_50px_rgba(0,0,0,0.2)] floating-nav">
+        
+        <a class="flex flex-col items-center justify-center text-stone-400 hover:text-primary w-14 group transition-all" href="#home">
+            <span class="material-symbols-outlined text-[28px] group-hover:-translate-y-1 transition-transform duration-300">home</span>
+            <span class="font-serif text-[9px] uppercase tracking-widest font-black mt-1 group-hover:opacity-100 transition-opacity">Home</span>
+        </a>
+        
+        <a class="flex flex-col items-center justify-center text-stone-400 hover:text-primary w-14 group transition-all" href="#services">
+            <span class="material-symbols-outlined text-[28px] group-hover:-translate-y-1 transition-transform duration-300">auto_awesome</span>
+            <span class="font-serif text-[9px] uppercase tracking-widest font-black mt-1 group-hover:opacity-100 transition-opacity">Services</span>
+        </a>
+        
+        <!-- Center Primary Action Button -->
+        <a class="flex flex-col items-center justify-center w-16 relative -top-8 group" href="tel:6205980963">
+            <div class="w-16 h-16 rounded-full saffron-gradient text-white flex items-center justify-center shadow-[0_15px_30px_rgba(255,107,0,0.5)] group-hover:scale-110 transition-all duration-300 border-4 border-white btn-pulse">
+                <span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">call</span>
+            </div>
+            <span class="font-serif text-[10px] text-primary uppercase tracking-widest font-black mt-2 drop-shadow-sm">Call</span>
+        </a>
+
+        <a class="flex flex-col items-center justify-center text-stone-400 hover:text-primary w-14 group transition-all" href="#about">
+            <span class="material-symbols-outlined text-[28px] group-hover:-translate-y-1 transition-transform duration-300">person</span>
+            <span class="font-serif text-[9px] uppercase tracking-widest font-black mt-1 group-hover:opacity-100 transition-opacity">About</span>
+        </a>
+        
+        <a class="flex flex-col items-center justify-center text-stone-400 hover:text-primary w-14 group transition-all" href="#contact">
+            <span class="material-symbols-outlined text-[28px] group-hover:-translate-y-1 transition-transform duration-300">chat</span>
+            <span class="font-serif text-[9px] uppercase tracking-widest font-black mt-1 group-hover:opacity-100 transition-opacity">Contact</span>
+        </a>
+        
+    </nav>
+
+</body>
+</html>
